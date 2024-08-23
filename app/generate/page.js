@@ -1,6 +1,10 @@
-'use client'
+'use client';
 
 import { useState } from 'react'
+import {db} from "@/firebase";
+import { useRouter } from "next/navigation";
+import { doc, collection, getDoc, writeBatch } from "firebase/firestore";
+import { useState } from  "react";
 import {
     Container,
     TextField,
@@ -16,8 +20,12 @@ import {
     DialogContentText,
     DialogActions,
 } from '@mui/material'
-import { db } from './firebase' // Import your Firebase configuration here
-import { doc, collection, getDoc, writeBatch } from 'firebase/firestore' // Ensure these imports are correct
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from '@mui/material/DialogContent';
+import DialogContent from '@mui/material/DialogContentText';
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogActions from '@mui/material/DialogActions';
+
 
 export default function Generate() {
     const [text, setText] = useState('')
